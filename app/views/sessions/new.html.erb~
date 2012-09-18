@@ -1,0 +1,75 @@
+
+<html>
+<head>
+</head>
+<body>
+<div class="clr"></div>
+
+<!--main-container start-->
+<div class="main-container"> 
+  
+<!--login-container start-->  
+<div class="login-container">
+<div class="left"><img src="images/form-tp-bg.png" alt="" /></div>
+<div class="lc-midbg">
+<% if current_user.verify==0 %>
+  <h2> You Did't verify Your Email Yet Please verify it !</h2>
+<% end %>
+<h2>Login</h2>  
+<div class="form-box">  
+<%= form_for(:session, :url=> sessions_path) do |f| %>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td valign="top" class="pad-tp-10"><%= f.label :email %></td>
+    <td valign="top"><%= f.text_field :email, :class => "input" ,:id =>'email' %></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+ <tr>
+   <td valign="top" class="pad-tp-10"><%= f.label :password %></td>
+   <td valign="top"><%= f.password_field :password , :class => "input",:id =>'pass'%></td>
+ </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><a> <%= link_to "Sign up now!", signup_path %><br>
+     <%= link_to "Forgot Password?", new_password_reset_path %><br>
+     </a></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+    <tr>
+    <td colspan="2"><%= f.submit "Login", :class=> "login-button" %></td>
+    </tr>
+   <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+
+</table>
+
+<% end %> 
+</div>
+</div>
+</div>
+<!--login-container end--> 
+</div>
+
+<!--main-container end-->
+
+<script type="text/javascript">
+$(document).ready(function(){
+$(".login-btn").hide();
+$(".home-btn").show();
+});
+</script>
+</body>
+</html>

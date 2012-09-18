@@ -1,0 +1,23 @@
+<html>
+<---------------------------------------------------------------------------->
+
+<h3>Verify Your account by clicking on this Button </h3>
+
+<%= form_for @user, :url => verify_path(params[:id]) do |f| %>
+
+<% f.text_field :verify, :class => "input", :value => "1"%>
+<%= f.submit "Submit", :class => "symbol-check" %>
+<% end %> 
+
+
+<br>
+<--------------------------------------------------------------------------->
+<script type="text/javascript">
+	
+$(document).ready(function(){
+$(".login-btn").hide();
+$(".home-btn").hide();  
+
+return false;
+});
+</script>

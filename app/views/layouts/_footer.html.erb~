@@ -1,0 +1,12 @@
+<footer class="footer">
+  <small>
+    © 2012 SEASIA CONSULTING (Offshore Software Development). All Rights Reserved. 
+  </small>
+  <nav>
+    <ul>
+      <li><%= link_to "About",   '#' %></li>
+      <li><%= link_to "Contact", '#' %></li>
+      <li><a href="http://www.seasiaconsulting.com">Seasia</a></li>
+    </ul>
+  </nav>
+</footer>

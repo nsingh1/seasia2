@@ -1,0 +1,4 @@
+class AddPhotoExtensionToUser < ActiveRecord::Migration
+  def change
+  end
+end

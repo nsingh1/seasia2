@@ -1,0 +1,7 @@
+To Verify Your Account, click the URL below.
+
+<%= @url %>
+
+This link will be expired after 2 hours, kindly visit this link within 2 hours.
+
+If you did not request your password to be reset, just ignore this email and your password will continue to stay the same.

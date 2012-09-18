@@ -1,0 +1,6 @@
+alert('#project_<%= @project.id %>');
+$('<%= escape_javascript(render(:partial => @micropost))%>').insertAfter('#project_<%= @project.id %>');
+
+$(".new_micropost").val('');
+
+

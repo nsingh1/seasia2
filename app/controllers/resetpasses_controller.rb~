@@ -1,0 +1,36 @@
+class ResetpassesController < ApplicationController
+
+  def new
+    @resetpass = Resetpass.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render :json => @resetpass }
+    end
+  end
+
+  
+
+ 
+  def create
+    @resetpass = Resetpass.new(params[:resetpass])
+	@user=User.all
+	@user.each do |u| 
+			if @resetpass.email == u.email
+				@imail=u.email
+				
+				@passwd=u.password_hash[0..6]
+   				if @resetpass.save
+					UserMailer.password_confirmation(@imail,@passwd).deliver
+					redirect_to signin_path
+					 flash[:success] = " New password sent to your email" 			
+				end
+			end
+	end
+	if !@imail
+		redirect_to signup_path
+		flash[:success] = " User not avilable, Sing Up Now....." 
+	end
+  end
+
+end

@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Micropost:</b>
+  <%= @fload.micropost %>
+</p>
+
+<p>
+  <b>Project:</b>
+  <%= @fload.project %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @fload.user %>
+</p>
+
+
+<%= link_to 'Edit', edit_fload_path(@fload) %> |
+<%= link_to 'Back', floads_path %>

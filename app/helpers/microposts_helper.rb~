@@ -1,0 +1,12 @@
+module MicropostsHelper
+def csnippet(thought)
+
+wordcount = 5
+truncate(thought, :length => 100)
+
+end 
+
+
+
+
+end

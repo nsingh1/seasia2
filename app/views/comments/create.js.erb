@@ -1,0 +1,6 @@
+
+$('<%= escape_javascript(render(:partial => @comment))%>').insertAfter('#micropost_<%= @micropost.id %>comment');
+
+$(".new_comment").val('');
+
+

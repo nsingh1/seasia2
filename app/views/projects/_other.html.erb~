@@ -1,0 +1,16 @@
+
+<% (@invites).each do |ml| %>
+<% if (ml.mail == current_user.email) %>
+ <% link_to ml.project_id %>  
+     <div class="hoverMe" align="center" style="margin:10px; float:left; width:160px; height:200px; border:2px solid #6E6E6E;">
+         <br><br>
+	     <h5>
+		<font face="times, serif" size="4">Project Name: <br></font>
+		<font color="brown" face="times, serif" size="3"><%= ml.project_id %><br><br></font>
+		<font face="times, serif" size="4">Company Name: <br></font>
+		
+       	     </h5>
+         <br><br><br>
+     </div>
+<% end %>
+<% end %>

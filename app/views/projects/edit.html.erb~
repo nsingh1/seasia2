@@ -1,0 +1,8 @@
+<html>
+<font face="times, serif" size="20"> Editing project</font>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @project %> |
+<%= link_to 'Back', projects_path %>
+

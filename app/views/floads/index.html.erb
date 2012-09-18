@@ -1,0 +1,38 @@
+<body>
+<%= render 'layouts/header' %>
+    <div class="container">
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+    </div>
+
+ <div class="container">
+ <div class="center hero-unit">
+
+<h1>Listing floads</h1>
+
+<table>
+  <tr>
+    <th>Micropost</th>
+    <th>Project</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @floads.each do |fload| %>
+  <tr>
+    <td><%= fload.micropost %></td>
+    <td><%= fload.project %></td>
+    <td><%= fload.user %></td>
+    <td><%= link_to 'Show', fload %></td>
+    <td><%= link_to 'Edit', edit_fload_path(fload) %></td>
+    <td><%= link_to 'Destroy', fload, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Fload', new_fload_path %>

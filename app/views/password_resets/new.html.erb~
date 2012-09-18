@@ -1,0 +1,76 @@
+<html>
+<!--top-bg-box end-->
+<div class="clr"></div>
+
+<!--main-container start-->
+<div class="main-container"> 
+  
+<!--login-container start-->  
+<div class="reset-password-container">
+<div class="left"><img src="/images/form-tp-bg.png" alt="" /></div>
+<div class="rpc-mid-bg">
+<h2>Reset Password</h2>  
+<div class="form-box">  
+<%= form_tag password_resets_path, :method => :post do  %>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="6%" align="center" valign="top" class="pad-tp-10">&nbsp;</td>
+    <td width="16%" align="center" valign="top" class="pad-tp-10">Email:</td>
+    <td width="78%" valign="top" ><%= text_field_tag :email,nil, :class => 'input' %> </td>
+  </tr>
+  <tr>
+    <td colspan="2">&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+ 
+    <tr>
+    <td colspan="3"><%= submit_tag "Send", :class => "send-btn" %></td>
+    </tr>
+
+
+
+</table>
+
+<% end %> 
+</div>
+  </div>
+</div>
+<!--login-container end--> 
+  
+</div>
+<!--main-container end-->
+
+
+<script type="text/javascript">
+	function validateEmail(a) {
+	    var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+	    if (filter.test(a)) {
+	        return true;
+             }
+	    else 
+	        return false;
+	    }
+
+$(document).ready(function(){
+$(".login-btn").hide();
+$(".home-btn").show();
+$(".send-btn").click(function(){
+      var a= $('.input').val();
+ if (a.length == 0) {
+	            alert('Please enter valid email address');
+                    return false;
+	        }
+	       else if (validateEmail(a)) {
+	           alert('valid Email Address');
+	        }
+	        else {
+	            alert('Invalid Email Address');
+	            return false;
+	        }
+
+});
+return false;
+});
+</script>
+</body>
+</html>

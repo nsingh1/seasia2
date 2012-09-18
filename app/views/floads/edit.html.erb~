@@ -1,0 +1,6 @@
+<h1>Editing fload</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @fload %> |
+<%= link_to 'Back', floads_path %>

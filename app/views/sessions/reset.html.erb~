@@ -1,0 +1,31 @@
+<html>
+</head>
+<body>
+<%= render 'layouts/header' %>
+    <div class="container">
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+    </div>
+
+ <div class="container">
+ <div class="center hero-unit">
+
+<h1><font face="times, serif">Reset Password</font></h1>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(:session, :url=> sessions_path) do |f| %>
+
+      <br><br><div align="left" style="margin-left:55px; width:100%;">
+      <%= f.label :email %></p>
+      <%= f.text_field :email %>
+
+      
+       <br>
+      <%= f.submit "send new password", :class=> "btn btn-large btn-primary" %>
+    <% end %>
+    
+  
+     </div>
+  </div>
+</div>

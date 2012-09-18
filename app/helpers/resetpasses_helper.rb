@@ -1,0 +1,2 @@
+module ResetpassesHelper
+end

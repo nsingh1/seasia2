@@ -1,0 +1,4 @@
+class AddPhotoExtensionToMicropost < ActiveRecord::Migration
+  def change
+  end
+end

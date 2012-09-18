@@ -1,0 +1,4 @@
+Hi <%= @invite.name %>
+you are invited by <%= @user %> on the project <%= @project %>
+
+For more detail visit our site  10.8.11.121:3000<%= @url %> with Email <%= @invite.mail %> .

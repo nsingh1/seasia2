@@ -1,0 +1,5 @@
+class ErrorsController < ApplicationController
+	def routing
+	   render :file => "#{Rails.root}/public/422.html", :status => 422, :layout => false
+	end
+end

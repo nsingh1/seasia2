@@ -1,0 +1,29 @@
+<%= form_for(@fload) do |f| %>
+  <% if @fload.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@fload.errors.count, "error") %> prohibited this fload from being saved:</h2>
+
+      <ul>
+      <% @fload.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :micropost %><br />
+    <%= f.text_field :micropost %>
+  </div>
+  <div class="field">
+    <%= f.label :project %><br />
+    <%= f.text_field :project %>
+  </div>
+  <div class="field">
+    <%= f.label :user %><br />
+    <%= f.text_field :user %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

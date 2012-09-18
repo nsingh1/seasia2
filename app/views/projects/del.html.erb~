@@ -1,0 +1,19 @@
+your project deleted now
+<br>
+<div align="center">
+		<br><br>
+		<p><b>
+		<font face="times, serif" size="10">Project Detail</font>
+		</b></p>
+		<hr size=50 width=200 align="left" color="red">
+		<p>
+  		<font face="times, serif" size="5"><b>Project Name:	</font></b>
+  		<font color="brown" face="times, serif" size="4"><%= @project.project_name %></font>
+		</p>
+
+		<p>
+		<font face="times, serif" size="5"><b>Company Name:	</font></b>
+		<font color="brown" face="times, serif" size="4"><%= @project.company_name %></font>
+		</p>
+   </div>
+<%= link_to 'Back', projects_path %>

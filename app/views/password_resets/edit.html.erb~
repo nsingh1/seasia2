@@ -1,0 +1,59 @@
+<html>
+<div class="clr"></div>
+
+<!--main-container start-->
+<div class="main-container"> 
+  
+<!--edit-container start-->  
+ <div class="reset-password-container">
+<div class="left"><img src="/images/form-tp-bg.png" alt="" /></div>
+<div class="rpc-mid-bg">
+<h2>Reset Password</h2>  
+<div class="form-box"> 
+<%= form_for @user, :url => password_reset_path(params[:id]) do |f| %> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  
+ <tr>
+   <td align="right" valign="top" class="pad-tp-10 pad-rt-3"><%= f.label :password %></td>
+   <td valign="top"><%= f.password_field :password, :class => "input" %></td>
+ </tr>
+   <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+ <tr>
+   <td align="right" valign="top" class="pad-tp-10 pad-rt-3"><%= f.label :password_confirmation, "Confirmation" %></td>
+   <td valign="top"><%= f.password_field :password_confirmation, :class => "input" %></td>
+ </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+
+   <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+
+</table>
+<tr>
+<td><%= f.submit "Submit", :class => "submit-button" %></td>
+</tr>
+ <% end %> 
+</div></div></div></div></div></div>
+<!--edit-container end--> 
+<tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  
+
+<!--main-container end-->
+<script type="text/javascript">
+$(document).ready(function(){
+$(".login-btn").hide();
+$(".home-btn").hide();
+});
+</script>
+
+

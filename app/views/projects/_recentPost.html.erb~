@@ -1,0 +1,180 @@
+<html>
+<br><br><br><br>
+
+  	<div align="center">
+
+		<font face="times, serif" size="6" >
+			<b> Recent Posts<b><hr size=50 width=200 align="left" color="red">
+		</font><br><br>
+	</div>
+	
+	    <div>
+		    <div style="float:left">			
+      			<% if @com.user.has_photo? %>
+      				<%= image_tag @com.user.photo_path, {:height => 60, :width=> 60} %>
+			<% else %>
+				<%= image_tag("/images/no_photo.jpg", :alt => "No image",:height => 45, :width=> 45) %>
+			<% end %><br>
+			<font size=2 >
+				<%= link_to @com.user.name, @com.user %>&nbsp;&nbsp;
+			</font>
+		   </div>
+		   <div style="float:left; height:50px;width:600px;">
+				<div class="content" style="float:left;"> 
+					<font size=4>
+						<%= link_to @com.micropost.content,@com.micropost %>
+						
+							<%= @com.content %>				
+					</font>
+				</div>
+		  </div>		
+
+		
+		<div style="float:right">		
+				<div class="timestamp"> 
+			   	<font size=2>			
+						<%= time_ago_in_words(@com.created_at) %>&nbsp;
+						(<%= link_to @com.micropost.comments.count ,@com.micropost %>)
+		          	</font></div>
+			
+		</div>
+	  </div>
+<br>
+	
+	
+	    <div style="float:left">
+		    <div style="float:left">			
+      			<% if @com1.user.has_photo? %>
+      				<%= image_tag @com1.user.photo_path, {:height => 60, :width=> 60} %>
+			<% else %>
+				<%= image_tag("/images/no_photo.jpg", :alt => "No image",:height => 45, :width=> 45) %>
+			<% end %><br>
+			<font size=2 >
+				<%= link_to @com1.user.name, @com1.user %>&nbsp;&nbsp;
+			</font>
+		   </div>
+		   <div style="float:left; height:50px;width:600px;">
+				<div class="content" style="float:left;"> 
+					<font size=4>
+						<%= link_to @com1.micropost.content,@com1.micropost %>
+						
+							<%= @com1.content %>&nbsp;				
+					</font>
+				</div>
+		  </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		
+
+		
+		<div style="float:right">		
+				<div class="timestamp"> 
+			   	<font size=2>			
+						<%= time_ago_in_words(@com1.created_at) %>&nbsp;
+						(<%= link_to @com1.micropost.comments.count ,@com1.micropost %>)
+		          	</font></div>
+			
+		</div>
+	  </div>
+<br>
+
+	
+	    <div style="float:left">
+		    <div style="float:left">			
+      			<% if @com2.user.has_photo? %>
+      				<%= image_tag @com2.user.photo_path, {:height => 60, :width=> 60} %>
+			<% else %>
+				<%= image_tag("/images/no_photo.jpg", :alt => "No image",:height => 45, :width=> 45) %>
+			<% end %><br>
+			<font size=2 >
+				<%= link_to @com2.user.name, @com2.user %>&nbsp;&nbsp;
+			</font>
+		   </div>
+		   <div style="float:left; height:50px;width:600px;">
+				<div class="content" style="float:left;"> 
+					<font size=4>
+						<%= link_to @com2.micropost.content,@com2.micropost %>
+						
+							<%= @com2.content %>&nbsp;				
+					</font>
+				</div>
+		  </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		
+
+		
+		<div style="float:right">		
+				<div class="timestamp"> 
+			   	<font size=2>			
+						<%= time_ago_in_words(@com2.created_at) %>&nbsp;
+						(<%= link_to @com2.micropost.comments.count ,@com2.micropost %>)
+		          	</font></div>
+			
+		</div>
+	  </div>
+<br>
+
+	
+	    <div style="float:left">
+		    <div style="float:left">			
+      			<% if @com3.user.has_photo? %>
+      				<%= image_tag @com3.user.photo_path, {:height => 60, :width=> 60} %>
+			<% else %>
+				<%= image_tag("/images/no_photo.jpg", :alt => "No image",:height => 45, :width=> 45) %>
+			<% end %><br>
+			<font size=2 >
+				<%= link_to @com3.user.name, @com3.user %>&nbsp;&nbsp;
+			</font>
+		   </div>
+		   <div style="float:left; height:50px;width:600px;">
+				<div class="content" style="float:left;"> 
+					<font size=4>
+						<%= link_to @com3.micropost.content,@com3.micropost %>
+						
+							<%= @com3.content %>&nbsp;				
+					</font>
+				</div>
+		  </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		
+
+		
+		<div style="float:right">		
+				<div class="timestamp"> 
+			   	<font size=2>			
+						<%= time_ago_in_words(@com3.created_at) %>&nbsp;
+						(<%= link_to @com3.micropost.comments.count ,@com3.micropost %>)
+		          	</font></div>
+			
+		</div>
+	  </div>
+<br>
+
+
+	 <div style="float:left">
+		    <div style="float:left">			
+      			<% if @com4.user.has_photo? %>
+      				<%= image_tag @com4.user.photo_path, {:height => 60, :width=> 60} %>
+			<% else %>
+				<%= image_tag("/images/no_photo.jpg", :alt => "No image",:height => 45, :width=> 45) %>
+			<% end %><br>
+			<font size=2 >
+				<%= link_to @com4.user.name, @com4.user %>&nbsp;&nbsp;
+			</font>
+		   </div>
+		   <div style="float:left; height:50px;width:600px;">
+				<div class="content" style="float:left;"> 
+					<font size=4>
+						<%= link_to @com4.micropost.content,@com4.micropost %>
+						
+							<%= @com4.content %>&nbsp;				
+					</font>
+				</div>
+		  </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		
+
+		
+		<div style="float:right">		
+				<div class="timestamp"> 
+			   	 <font size=2>			
+						<%= time_ago_in_words(@com4.created_at) %>&nbsp;
+						(<%= link_to @com4.micropost.comments.count ,@com4.micropost %>)
+		          	 </font>
+			
+				</div>
+	      </div>
+
+
+   </div>

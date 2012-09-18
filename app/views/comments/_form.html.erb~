@@ -1,0 +1,20 @@
+<html>
+<div class="grey-box1">
+                <%= form_for ([m, @comment]) do |f| %>
+                 
+                  <div class="right-block">
+                    <div id="textbox" class="small-txtarea">
+                      <%= f.text_area :content ,:cols => '2',:rows => '2', :class => 'new_comment'%>
+                    </div>
+                    <div class="attachment-box">
+                      <div class="fileinputs">
+                        <div class="left"><%= f.file_field :photo, :class => 'file',:id => 'postsize' %></div>
+                        <div class="fakefile">
+			  <div class="left" > <%= image_submit_tag("/images/attachment-icon.png") %>Attachment</div>
+			  </div>
+			</div>
+			<div class="right"> <%= image_submit_tag("/images/post-blue-btn.jpg") %></div>
+                    </div>
+                  </div>
+                <% end %>
+</div>

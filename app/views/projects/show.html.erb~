@@ -1,0 +1,259 @@
+<html>
+<head>
+
+</head>
+<body>
+
+
+<div class="clr"></div>
+
+<!--main-container start-->
+<div class="main-container"> 
+  <!--project-detail start-->
+  <div class="project-detail-box">
+    
+      <%= render :partial => 'microposts/show', :locals => { :@project => @project}  %>
+      <!--feed-box start-->
+      <div class="feed-box">
+        <div id="<%= dom_id @project %>" class="feed-wrapper">
+          <h2>Feed</h2>
+	  <% @project.microposts.each do |m| %>
+
+          	<%= render :partial => "microposts/micropost", :locals => { :m => m } %>
+                <%= render :partial => 'comments/show', :locals => { :m => m}  %>
+              
+            </div>
+          </div>
+	 <% end %>
+        </div>
+      </div>
+      <!--feed-box end--> 
+</div>
+    <div class="column-2">
+      <div class="team-box">
+        <div class="tp-green-bg">
+          <h2>Teams</h2>
+        </div>
+        <div class="greyish-mid-bg">
+          <div class="lead">
+            <% if (@user) %>
+	      <% @user.each do |owner| %>
+	        <% if owner.id == @project.user_id %>
+                  <div class="lft-title"><strong>LEAD</strong></div>
+                  <div class="rht-title"><%= owner.name %> </div>
+                <% end %>
+	      <% end %>
+  	    <% else %>
+              <div class="lft-title"><strong>LEAD</strong></div>
+              <div class="rht-title"><%= owner.name %></div>
+	    <% end %>
+          </div>
+          <div class="clr"></div>
+          <ul>
+            <li>Project Name: <%= @project.project_name %></li>
+            <li>Company Name: <%= @project.company_name %></li>
+          </ul>
+          <div id="invitation" style="padding-top:7px;padding-bottom:7px"> <%= image_tag "/images/add-member-btn.png" %></div>
+	  <a id="displayText" href="javascript:toggle();"><%= image_tag("/images/view-all-members-btn.png" , :alt => "")%></a>
+ 	  </div>
+        </div>
+	<!-- view all members -->
+	<br>
+	<div id="displaydiv" style="display:none"; class="view-all-members" >
+	<% invi=0 %>
+	<% @project.invites.each do |friend| %> <% invi = invi+1 %>
+        <div class="vam-list">
+          <div class="lft-vam">
+      	    <% count=0 %>
+	    <% @user.each do |u| %>
+	      <% count=count+1 %>
+	      <% if friend.mail == u.email %>
+                <% if u.has_photo? %>
+		  <%= image_tag u.photo_path, {:height => 40, :width=> 40} %>
+		<% else %>
+		  <%= image_tag("/photo_store/no_photo.jpg", :alt => "No image",:height => 50, :width=> 50) %>
+		<% end %>
+              <% else %>
+                <% count=count-1 %>      
+	      <% end %>
+	    <% end %>
+	  </div>
+	 <% if count==0 %>
+	   <div class="lft-vam">
+	     <%= image_tag("/images/not-accepted.png", :alt => "Not Accepted Yet!",:height => 55, :width=> 55) %>
+	   </div>
+         <% end %>
+      	 <div class="rht-vam">
+      	   <p><span><strong><%= friend.name %></strong></span></p>
+      	   <p><%= friend.mail %></p>
+	   <p>
+	     <% if current_user.id == @project.user_id %>
+	       <%= link_to image_tag("/images/delete_project.png",:height => 30, :width=> 30) , friend, :confirm => 'Are you sure you want to delete this user from your  project?',
+		   :method => :delete %>
+	     <% end %>
+	   </p>
+      	 </div>
+        </div>
+	<% end %>
+
+	<%if invi == 0 %>
+	<div class="vam-list">
+	  <font color="#0489B1">
+	    No member included in this project yet!
+	  </font>
+        </div>
+	<% end %>
+      </div>
+      <!-- view all members end -->
+      </div>
+    </div>
+  </div>
+</div>
+  <!--project-detail end--> 
+  
+  <div class="clr"></div>
+  
+
+  
+
+<!--main-container end--> 
+
+<!--Invitation start--> 
+<div id="invi" >
+ <div class="popup-overlay-bg">
+
+<% if current_user.id == @owner.id %>
+<!--popup-window start-->
+  <div class="popup-window">
+    <div class="popup-tp-bg"></div>
+    <div class="popup-mid-bg">
+      <div class="popup-wrapper">
+        <p>
+        <font class="font-14">Consultant Invitation:</font>
+      		An email will be sent inviting each person to this project.
+	         
+        </p>
+        <div class="popup-form">
+          <%= form_for([@project,@project.invites.build]) do |f| %>
+            <%= f.label :name %><br />
+             <%= f.text_field :name ,:class=>"input3" %>
+            <label>
+	      <%= f.label :mail %><br />
+            </label>
+            <%= f.text_field :mail ,:class=>"input3" %>
+            <div align="right" id="cancel_invi">
+              <input name="" type="button" class="cancel-btn" />
+            </div>
+            <%= f.submit "Send Invitation",:class=>"send-invitation-btn"  %> 
+          <% end %>
+    <% else %>
+  
+      <div class="popup-overlay-bg">
+	<!--popup-window start-->
+   	<div class="popup-window">
+     	<div class="popup-tp-bg"></div>
+      	 <div class="popup-mid-bg">
+         <div class="popup-wrapper">
+            
+ 	<font color='red'><h2> <blink>You cant invite others in this project!</blink></h2> </font>
+
+           <div align="right" id="cancel_btn" >
+  		<%= link_to image_tag("/images/cancel-btn.png"), project_path %>            
+           </div>
+         </div>
+       </div>
+     </div>
+     </div>
+    
+
+<% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--popup-window end-->
+ </div>
+</div>
+<!-- Invitation end -->
+<!-- Preview -->
+
+<!--main-container end--> 
+<div id="abc" class="white_content">
+ <div class="popup-overlay-bg">
+<!--popup-window start-->
+   <div class="popup-window">
+     <div class="popup-tp-bg"></div>
+       <div class="popup-mid-bg">
+         <div class="popup-wrapper">
+           <span id="textPreview"></span>
+           <div align="right" id="cancel_pri">
+             <input name="" type="button" class="cancel-btn" />
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+<!--popup-window end-->
+ </div>
+</div>
+<!--preview End-->
+ <script type="text/javascript">
+  $(document).ready(function(){
+    $("#abc").hide();
+    $("#invi").hide();
+    $("#pri").click(function(){
+      var a= $('#Textpri').val();
+      var b= $('.file').val();
+   if(a.length ==0){ alert("No Preview Available"); return false;}
+else
+    {  
+      if (b.length == 0) { 
+                                $('#textPreview').text(a).append(" <br /><br /><br /><br />Attchments :<br />" + "No attchment");
+                                 $("#abc").show('slow');
+                          }
+       else
+       { 
+        $('#textPreview').text(a).append(" <br /><br /><br /><br />Attchments :<br />" + b); 
+        $("#abc").show('slow'); }
+       }
+      return false;
+    });
+    $("#cancel_pri").click(function(){
+      $("#abc").hide('slow');  
+      return false;
+    });
+    $("#invitation").click(function(){
+      $("#invi").show('slow');
+      return false;
+    });
+    $("#cancel_invi").click(function(){
+      $("#invi").hide('slow');  
+      return false;
+    });
+$('#sizeid').bind('change', function() {
+  
+if (this.files[0].size > 2097152) 
+{
+ alert("File size is more than 2 mb"); 
+$(this).val('');
+return false; 
+}
+
+});
+
+$('#postsize').bind('change', function() {  
+if (this.files[0].size > 2097152) 
+{
+ alert("File size is more than 2 mb"); 
+$(this).val('');
+return false; 
+}
+
+});
+
+  });
+ </script>
+</body>
+</html>
+ 

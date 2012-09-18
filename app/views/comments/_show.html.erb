@@ -1,0 +1,12 @@
+<html>
+<div  class="grey-box-wrapper">
+<div id="<%= dom_id m %>comment" class="grey-box-outer">
+              <% m.comments.each do |comment| %>
+
+               <%= render :partial => "comments/comment", :locals => { :comment => comment} %>
+
+		<% end %>
+
+</div>
+                <%= render :partial => "comments/form", :locals => { :m => m} %>
+</div>

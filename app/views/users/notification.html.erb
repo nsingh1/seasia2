@@ -1,0 +1,77 @@
+hi i m here
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<% if current_user.verify==0 %> 
+<div id="verify" class="white_content">
+ <div class="popup-overlay-bg">
+<!--popup-window start-->
+   <div class="popup-window">
+     <div class="popup-tp-bg"></div>
+       <div class="popup-mid-bg">
+         <div class="popup-wrapper">
+            
+ <font color='red'><h2> You Did't verify Your Email Yet Please verify it !</h2> </font>
+
+           <div align="right" id="cancel_btn">
+  <%= link_to image_tag("/images/cancel-btn.png"), signout_path, :method=> "delete" %>            
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+<!--popup-window end-->
+ </div>
+</div>
+<!--preview End-->
+<% end %>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#verify").show();
+  });
+ </script> 

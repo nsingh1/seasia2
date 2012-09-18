@@ -1,0 +1,5 @@
+Welcome user in Railscamp .
+
+<h2><%= @user.name %></h2>
+<br>
+Thanks for register in our site.

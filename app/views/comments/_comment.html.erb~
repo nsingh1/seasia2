@@ -1,0 +1,64 @@
+<html>
+ <div id="<%= dom_id comment %>" class="grey-box">
+                  <div class="left-block">
+		    <% if comment.user.has_photo? %>
+			<%= image_tag comment.user.photo_path, {:height => 44, :width=> 44} %>
+		    <% else %>
+			<%= image_tag("/photo_store/no_photo.jpg", :alt => "No image",:height => 44, :width=> 44) %>
+		    <% end %>
+		  </div>
+                  <div class="right-block">
+                    <p><span><strong><%= comment.user.name %></strong></span>posted
+			<span class="grey">
+				<%= time_ago_in_words(comment.created_at) %>
+				<% if ( current_user.id == comment.user_id ) %>
+				  <% if ( comment.updated_at > (Time.now - 30.seconds)) %>
+	                        	<%= link_to (image_tag ("/images/del.png", :alt => "No image",:height => 19, :width=> 15)),
+	                            	comment,:confirm => 'Are you sure you want to delete this comment ?',
+	                            	:method => :delete,:class => "right", :remote => true %>
+				  <% else %>
+				  <% end %>
+		       	       <% end %>
+			</span>
+		    </p>
+                    <p align="justify"><%= comment.content%></p>
+                    <div class="view-doc-delete">
+                      <div class="lft-blk">
+                        <div class="left doc">
+				<% if comment.has_photo? %>
+					<% foo = comment.extension %>
+					<% if foo == "pdf" %>
+					  <%= link_to (image_tag("/fileimage/pdf.gif", :alt => "No image",:height => 19, :width=> 15)), 					  comment.photo_path, :target => '_blank' %>
+					  <%= foo %>
+					  <% else if foo == "doc" || foo == "docx"  %>
+					    <%= link_to (image_tag("/fileimage/doc.gif", :alt => "No image",:height => 19, :width=> 15)), 						    comment.photo_path, :target => '_blank' %>
+					    <%= foo %>
+					    <% else if foo == "odt" %>
+					      <%= link_to (image_tag("/fileimage/doc.gif", :alt => "No image",:height => 19, :width=> 15)), 						      comment.photo_path, :target => '_blank' %>
+					      <%= foo %>
+					      <% else if foo == "ppt" || foo == "pptx" %>
+					        <%= link_to (image_tag("/fileimage/ppt.gif", :alt => "No image",:height => 19, :width=> 15)), 							comment.photo_path, :target => '_blank' %>
+						<%= foo %>
+						<% else if (foo == "png" || foo == "jpg") || (foo == "jpeg" || foo == "gif" )%>
+						  <%= link_to (image_tag(comment.photo_path, :alt => "No image",:height => 19, :width=> 15)), 							  comment.photo_path, :target => '_blank' %>
+						  <%= foo %>
+						<% else %>
+							<%= link_to (image_tag("/fileimage/other.gif", :alt => "No image",:height => 19, :width=> 15)), 							    comment.photo_path, :target => '_blank' %>
+							<%= foo %>
+						<% end %>
+					      <% end %>
+					    <% end %>
+					  <% end %>
+					<% end %>     			  		
+				<% end %>
+			</div>
+                        <div class="left">
+                          <p><strong></strong></p>
+                        </div>
+                      </div>
+                      <div class="rite-blk">
+                        <p class="left"> <a href="#"></a>  </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>

@@ -1,0 +1,128 @@
+<html>
+<head>
+</head>
+<body>
+
+ <div class="clr"></div>
+
+<!--main-container start-->
+<div class="main-container"> 
+  
+  <!--header wrapper start-->
+  <div class="header-wrapper"> 
+    <!--slider start-->
+    <div id="showcase" class="showcase">
+      <div class="showcase-slide">
+        <div class="showcase-content">
+          <div class="showcase-content-wrapper"> 
+            <!--content area start-->
+            <div class="header">
+              <div class="header-col-1"><img src="images/hdr-image.png" alt="" /></div>
+              <div class="header-col-2">
+                <h2>A central, collaborative work- place to track and complete projects</h2>
+                <p>Invite your team to a shared project workspace and efficiently manage roles, permissions, schedules, and responsibilities.</p>
+                <div class="left"><%= link_to image_tag("/images/signup-now-btn.png",:alt=>""), signup_path %></div>
+              </div>
+            </div>
+            <!--content area end--> 
+          </div>
+        </div>
+      </div>
+      <div class="showcase-slide">
+        <div class="showcase-content">
+          <div class="showcase-content-wrapper"> 
+            <!--content area start-->
+            <div class="header">
+              <div class="header-col-1"><img src="images/hdr-image.png" alt="" /></div>
+              <div class="header-col-2">
+                <h2>A central, collaborative work- place to track and complete projects</h2>
+                <p>Invite your team to a shared project workspace and efficiently manage roles, permissions, schedules, and responsibilities.</p>
+                <div class="left"><%= link_to image_tag("/images/signup-now-btn.png",:alt=>""), signup_path %></div>
+              </div>
+            </div>
+            <!--content area end--> 
+          </div>
+        </div>
+      </div>
+      <div class="showcase-slide">
+        <div class="showcase-content"> 
+          <!--content area start-->
+          <div class="header">
+            <div class="header-col-1"><img src="images/hdr-image.png" alt="" /></div>
+            <div class="header-col-2">
+              <h2>A central, collaborative work- place to track and complete projects</h2>
+              <p>Invite your team to a shared project workspace and efficiently manage roles, permissions, schedules, and responsibilities.</p>
+              <div class="left"><%= link_to image_tag("/images/signup-now-btn.png",:alt=>""), signup_path %></div>
+            </div>
+          </div>
+          <!--content area end--> 
+        </div>
+      </div>
+    </div>
+    <!--slider end--> 
+  </div>
+  <!--header wrapper end-->
+  
+  <!--bottom-container start-->
+  <div class="bottom-container">
+  <div class="colm-1">
+    <img src="images/manage-projects-online.png" alt="" />
+    </div>
+  <div class="colm-2">
+  <div class="bx-1">
+  <div class="left"><img src="images/define-teams.jpg" alt="" /></div>
+  <div class="clr"></div>
+  <p><strong>Define teams &amp; roles</strong></p>
+  </div>
+  <div class="bx-1">
+  <div class="left"><img src="images/schedules.jpg" alt="" /></div>
+  <div class="clr"></div>
+  <p><strong>Schedule all your project dates</strong></p>
+  </div>
+  <div class="bx-1">
+  <div class="left"><img src="images/integrated-with-google.jpg" alt="" /></div>
+  <div class="clr"></div>
+  <p><strong>Integrated with Google across the board</strong></p>
+  </div>
+  </div>
+  </div>
+  <!--bottom-container end--> 
+  
+</div>
+<!--main-container end-->  
+<% if current_user %> 
+<% if current_user.verify==0 %> 
+<div id="verify" class="white_content">
+ <div class="popup-overlay-bg">
+<!--popup-window start-->
+   <div class="popup-window">
+     <div class="popup-tp-bg"></div>
+       <div class="popup-mid-bg">
+         <div class="popup-wrapper">
+            
+ <font color='red'><h2> You Did't verify Your Email Yet Please verify it !</h2> </font>
+
+           <div align="right" id="cancel_btn">
+  <%= link_to image_tag("/images/cancel-btn.png"), signout_path, :method=> "delete" %>            
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+<!--popup-window end-->
+ </div>
+</div>
+<!--preview End-->
+<% end %>
+<% end %>
+<script type="text/javascript">
+$(document).ready(function(){
+$(".home-btn").hide();
+$("#verify").show();
+});
+</script>
+</body>
+</html>
+  
+
+

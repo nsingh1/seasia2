@@ -1,0 +1,26 @@
+<html>
+<div style="clear:both">
+	
+	
+		<br><hr><br>
+		<div align="center">
+				<font face="times, serif" size="6" >
+					<b>Discussions<b>
+				</font>
+				<hr width="40">
+		</div>	
+			<%= form_for [@project,@micropost] do |f| %>
+				<br><br>	
+			     <div align="left" class="field" style="width:200%;" >
+		       		<b>Content: </b><br>
+				<%= f.text_area :content, :rows=> 4, :cols=> 140,:style => 'background-color:#F6CEF5;resize: none; ' %>
+ 			        <%= f.file_field :photo  %>
+			     
+					
+		  	    <div class="actions" >
+		    		<%= f.submit %>
+		  	     </div>
+				</div>
+			<% end %>
+    	 
+</div>

@@ -1,0 +1,212 @@
+<html>
+<br><br><br><hr><br>
+<h2> Myprojects </h2>
+<% @abc.each do |a|%>
+
+<% if current_user == a.user %>
+
+<div align="center">
+
+		<font face="times, serif" size="4" >
+			<b> Recent Posts in Project -><%= a.project_name %><b><hr  width=200 align="left" color="red">
+		</font>
+</div>
+<% count=0 %>
+   <% @xyz.each do |b|%> 
+<% if count <= 1 %>
+       <% if b.project == a %>
+<% count=count+1 %>
+
+
+<br>
+<div style="float:left;width:700px;" >
+   <div style="float:left;width:100px;">
+			
+      			<% if b.user.has_photo? %>
+      				<%= image_tag b.user.photo_path, {:height => 60, :width=> 60} %>
+			<% else %>
+				<%= image_tag("/photo_store/no_photo.jpg", :alt => "No image",:height => 50, :width=> 50) %>
+			<% end %><br>
+			<font size=2 >
+				<%= link_to b.user.name, b.user %>
+			</font>
+   </div>
+   <div style="float:left; height:20px;width:450px;">
+		
+		   <div style="float:left;margin-top: 5px;margin-bottom: 5px" ALIGN="LEFT">			
+			<font size=4 style="align:left">
+				<%= link_to msnippet(b.micropost.content),b.micropost %>
+				<%= snippet(b.content)  %>
+		</font>
+		   </div>
+		
+   </div>
+   <div style="float:right;margin-top: 10px;margin-bottom: 10px">		
+		<div class="timestamp">
+		   	<font size=2>	
+                              <% if b.micropost.has_photo? %>
+
+	<% foo = b.micropost.extension %>
+	<% if foo == "pdf" %>
+		  <%= link_to (image_tag("/fileimage/pdf.gif", :alt => "No image",:height => 20, :width=> 20)), b.micropost.photo_path %>
+				<%= foo %>
+	<% else if foo == "doc" || foo == "docx"  %>
+		<%= link_to (image_tag("/fileimage/doc.gif", :alt => "No image",:height => 20, :width=> 20)), b.micropost.photo_path %>
+		<%= foo %>
+	<% else if foo == "odt" %>
+		<%= link_to (image_tag("/fileimage/doc.gif", :alt => "No image",:height => 20, :width=> 20)), b.micropost.photo_path %>
+		<%= foo %>
+	<% else if foo == "ppt" || foo == "pptx" %>
+		<%= link_to (image_tag("/fileimage/ppt.gif", :alt => "No image",:height => 20, :width=> 20)), b.micropost.photo_path %>
+		<%= foo %>
+	<% else if (foo == "png" || foo == "jpg") || (foo == "jpeg" || foo == "gif" )%>
+		<%= link_to (image_tag(b.micropost.photo_path, :alt => "No image",:height => 20, :width=> 20)), b.micropost.photo_path %>
+		<%= foo %>
+	<% else %>
+		<%= link_to (image_tag("/fileimage/other.gif", :alt => "No image",:height => 20, :width=> 20)), b.micropost.photo_path %>
+		<%= foo %>
+	<% end %><% end %><% end %><% end %> <% end %>     		
+			  		
+<% end %>	
+
+
+<% if b.has_photo? %>
+
+	<% foo = b.extension %>
+	<% if foo == "pdf" %>
+		  <%= link_to (image_tag("/fileimage/pdf.gif", :alt => "No image",:height => 20, :width=> 20)), b.photo_path %>
+				<%= foo %>
+	<% else if foo == "doc" || foo == "docx"  %>
+		<%= link_to (image_tag("/fileimage/doc.gif", :alt => "No image",:height => 20, :width=> 20)), b.photo_path %>
+		<%= foo %>
+	<% else if foo == "odt" %>
+		<%= link_to (image_tag("/fileimage/doc.gif", :alt => "No image",:height => 20, :width=> 20)), b.photo_path %>
+		<%= foo %>
+	<% else if foo == "ppt" || foo == "pptx" %>
+		<%= link_to (image_tag("/fileimage/ppt.gif", :alt => "No image",:height => 20, :width=> 20)), b.photo_path %>
+		<%= foo %>
+	<% else if (foo == "png" || foo == "jpg") || (foo == "jpeg" || foo == "gif" )%>
+		<%= link_to (image_tag(b.photo_path, :alt => "No image",:height => 20, :width=> 20)), b.photo_path %>
+		<%= foo %>
+	<% else %>
+		<%= link_to (image_tag("/fileimage/other.gif", :alt => "No image",:height => 20, :width=> 20)), b.photo_path %>
+		<%= foo %>
+	<% end %><% end %><% end %><% end %>  <% end %>    		
+			  		
+<% end %>		
+				&nbsp;&nbsp;&nbsp;<%= tsnippet( l b.created_at) %>
+				(<%= link_to b.micropost.comments.count ,b.micropost %>)
+	          	</font>
+			
+		</div>
+   </div>
+	 
+</div>
+<% end %><% end %> <% end %>
+<% end %><% end %>.
+<br><hr><br>
+<h2> Other Projects </h2>
+<% @invite.each do |i|%>
+ <% if @user.email == i.mail %>
+  <% @abc.each do |b|%>
+   <% if i.project_id == b.id %>
+	
+     <div align="center">
+
+		<font face="times, serif" size="4" >
+			<b> Recent Posts in Project -><%= b.project_name %><b><hr width=200 align="left" color="red">
+		</font>
+</div>
+<% count=0 %>
+   <% @xyz.each do |x|%> 
+<% if count <= 1 %>
+       <% if x.project == b %>
+<% count=count+1 %>
+
+
+<br>
+<div style="float:left;width:700px;" >
+   <div style="float:left;width:100px;">
+			
+      			<% if x.user.has_photo? %>
+      				<%= image_tag x.user.photo_path, {:height => 40, :width=> 40} %>
+			<% else %>
+				<%= image_tag("/photo_store/no_photo.jpg", :alt => "No image",:height => 50, :width=> 50) %>
+			<% end %><br>
+			<font size=2 >
+				<%= link_to x.user.name, x.user %>
+			</font>
+   </div>
+   <div style="float:left; height:20px;width:450px;">
+		
+		   <div style="float:left;margin-top: 5px;margin-bottom: 5px" ALIGN="LEFT">			
+			<font size=4 style="align:left">
+				<%= link_to msnippet(x.micropost.content),x.micropost %>
+				<%= snippet(x.content)  %>
+		</font>
+		   </div>
+		
+   </div>
+   <div style="float:right;margin-top: 10px;margin-bottom: 10px">		
+		<div class="timestamp">
+		   	<font size=2>	
+                               	<% if x.micropost.has_photo? %>
+
+	<% foo = x.micropost.extension %>
+	<% if foo == "pdf" %>
+		  <%= link_to (image_tag("/fileimage/pdf.gif", :alt => "No image",:height => 20, :width=> 20)), x.micropost.photo_path %>
+				<%= foo %>
+	<% else if foo == "doc" || foo == "docx"  %>
+		<%= link_to (image_tag("/fileimage/doc.gif", :alt => "No image",:height => 20, :width=> 20)), x.micropost.photo_path %>
+		<%= foo %>
+	<% else if foo == "odt" %>
+		<%= link_to (image_tag("/fileimage/doc.gif", :alt => "No image",:height => 20, :width=> 20)), x.micropost.photo_path %>
+		<%= foo %>
+	<% else if foo == "ppt" || foo == "pptx" %>
+		<%= link_to (image_tag("/fileimage/ppt.gif", :alt => "No image",:height => 20, :width=> 20)), x.micropost.photo_path %>
+		<%= foo %>
+	<% else if (foo == "png" || foo == "jpg") || (foo == "jpeg" || foo == "gif" )%>
+		<%= link_to (image_tag(x.micropost.photo_path, :alt => "No image",:height => 20, :width=> 20)), x.micropost.photo_path %>
+		<%= foo %>
+	<% else %>
+		<%= link_to (image_tag("/fileimage/other.gif", :alt => "No image",:height => 20, :width=> 20)), x.micropost.photo_path %>
+		<%= foo %>
+	<% end %><% end %><% end %><% end %>  <% end %>    		
+			  		
+<% end %>
+<% if x.has_photo? %>
+
+	<% foo = x.extension %>
+	<% if foo == "pdf" %>
+		  <%= link_to (image_tag("/fileimage/pdf.gif", :alt => "No image",:height => 20, :width=> 20)), x.photo_path %>
+				<%= foo %>
+	<% else if foo == "doc" || foo == "docx"  %>
+		<%= link_to (image_tag("/fileimage/doc.gif", :alt => "No image",:height => 20, :width=> 20)), x.photo_path %>
+		<%= foo %>
+	<% else if foo == "odt" %>
+		<%= link_to (image_tag("/fileimage/doc.gif", :alt => "No image",:height => 20, :width=> 20)), x.photo_path %>
+		<%= foo %>
+	<% else if foo == "ppt" || foo == "pptx" %>
+		<%= link_to (image_tag("/fileimage/ppt.gif", :alt => "No image",:height => 20, :width=> 20)), x.photo_path %>
+		<%= foo %>
+	<% else if (foo == "png" || foo == "jpg") || (foo == "jpeg" || foo == "gif" )%>
+		<%= link_to (image_tag(x.photo_path, :alt => "No image",:height => 20, :width=> 20)), x.photo_path %>
+		<%= foo %>
+	<% else %>
+		<%= link_to (image_tag("/fileimage/other.gif", :alt => "No image",:height => 20, :width=> 20)), x.photo_path %>
+		<%= foo %>
+	<% end %><% end %><% end %><% end %><% end %>    		
+			  		
+<% end %>			
+			&nbsp;&nbsp;&nbsp;	<%= tsnippet( l b.created_at) %>
+				(<%= link_to x.micropost.comments.count ,x.micropost %>)
+	          	</font>
+			
+		</div>
+   </div>
+	 
+</div><% end %><% end %>
+<% end %>
+<% end %><% end %>
+<% end %><% end %>
+<div> <br> <br><br> </div>

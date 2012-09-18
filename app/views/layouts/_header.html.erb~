@@ -1,0 +1,55 @@
+<!--top-bg-box start-->
+
+<% if signed_in? %>
+<div class="top-bg-box">
+  <div class="top-box">
+    <div class="left">
+    <%= link_to image_tag("/images/logo.png",:alt=>"NO image") %>
+    </div>
+
+     <div class="toplinks">
+      <ul>
+  
+        <li><%= link_to 'Home', {:action => 'index', :controller => 'projects'}   %></li>
+        <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+        <li class="divider-none"><%= link_to 'Projects',  {:action => 'index', :controller => 'projects'} %></li>
+      </ul>
+    </div>
+    <div class="right-box"> 
+      <!--account-profile start-->
+<div class="logout-btn right"><%= link_to image_tag("/images/logout-btn.png"), signout_path, :method=> "delete" %></div>
+      <div class="account-profile">
+        <div class="col-1">
+          <h2><%= current_user.name %></h2>
+        </div>
+        <div class="col-2"> <% if current_user.has_photo? %>
+			       		<%= image_tag(current_user.photo_path, {:height => 50, :width=> 50})%>		
+			<% else %>
+        			<%= image_tag("/photo_store/no_photo.jpg", :alt => "No image",:height => 50, :width=> 50) %>				
+        		<% end %>
+        </div>
+     
+      </div>
+      <!--account-profile end--> 
+    </div>  
+ </div>
+</div>
+  <% else %>
+<div class="top-bg-box">
+  <div class="top-box">
+<div class="left">
+    <%= link_to image_tag("/images/logo.png",:alt=>"NO image") %>
+    </div>
+    <div class="right-box">
+     <div class="home-btn"><%= link_to image_tag("/images/home-button.png",:alt=>""), root_path %></div>
+        <div class="login-btn">
+          
+          <%= link_to image_tag("/images/login-btn.png",:alt=>""), signin_path %>
+          
+      </div>
+    </div>
+
+  <% end %>
+  </div>
+</div>
+<!--top-bg-box end-->

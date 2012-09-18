@@ -1,0 +1,19 @@
+class VerifyController < ApplicationController
+  def edit
+  end
+
+def edit
+  @user = User.find_by_verify_token!(params[:id])
+end
+
+def update
+  @user = User.find_by_verify_token!(params[:id])
+  if @user.verify_token_sent_at < 2.hours.ago
+    redirect_to root_path, :flash =>   {:alert => "Verification  expired."}
+  elsif @user.update_attributes(params[:user])
+    redirect_to root_url, :flash =>   {:notice => "Verification  done !"}
+  else
+    render :edit
+  end
+end
+end

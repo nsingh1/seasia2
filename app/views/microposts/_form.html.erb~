@@ -1,0 +1,29 @@
+<html>
+
+      <h2><%= @project.project_name %></h2>
+      <%= form_for ([@project,@micropost], :remote => true) do |f| %>
+      <div class="attachment-preview-post">
+        <div class="txtarea-box">
+          <div class="left"><%= image_tag("/images/textarea-box-top-bg.png" , :alt => "")%></div>
+          <div class="mid-box">
+            <%= f.text_area :content, :rows=> 6, :cols=> 2 ,:id => 'Textpri', :class => 'new_micropost'%>
+          </div>
+        </div>
+        <div class="clr"></div>
+        <div class="btn-box">
+	  <a class="left">
+	  <div class="fileinputs" >
+	    <a  style="text-decoration:none" >
+		<%= f.file_field :photo, :class => 'file',:id => 'sizeid'%>
+            </a>
+	    <div class="fakefile">
+		<%= image_tag("/images/attachment-btn.png" , :alt => "",:class =>'left')%>
+	    </div>
+                <%= image_submit_tag("/images/post-btn.png",:class =>'right',:width =>'81',:height=>'37',:id=>'postID') %>
+                <%= image_tag("/images/preview-btn.png" , :alt => "",:class =>'right',:width =>'111',:height=>'37',:id=>'pri')%>
+          </div>   
+	  </a>
+        </div>
+      </div>
+      <% end %>
+<div class="clr"></div>

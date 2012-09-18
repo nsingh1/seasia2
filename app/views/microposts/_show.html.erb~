@@ -1,0 +1,7 @@
+<html>
+<div class="column-1">
+
+      <%= render :partial => "microposts/form", :locals => { :@project => @project} %>
+      
+      
+		 

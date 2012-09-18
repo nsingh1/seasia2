@@ -1,0 +1,40 @@
+<html>
+<div>
+	<br><br>
+	<div id="displaydiv" style="display:none";>
+		<br><hr><br><font face="times, serif" size="6"><b>Employees<b></font><br><br>
+		<% @project.invites.each do |friend| %>
+		<div style="margin:10px; float:left; width:160px; height:200px;" align="center">	   	
+		  <div align="center" class="hoverMe" style="margin:10px; float:left; width:160px; height:200px; border:2px solid #6E6E6E;">
+	         	<br><h5><% count=0 %>
+		     	<% @user.each do |u| %><% count=count+1 %>
+					<% if friend.mail == u.email %>
+                        	             
+						<% if u.has_photo? %>
+		      					<%= image_tag u.photo_path, {:height => 40, :width=> 40} %>
+						<% else %>
+							<%= image_tag("/photo_store/no_photo.jpg", :alt => "No image",:height => 50, :width=> 50) %>
+						<% end %><br>
+
+                        	        <% else %>
+                        	        	    <% count=count-1 %>      
+		        	        <% end %>
+			 <% end %>
+	                 <% if count==0 %>
+				<font color="brown" face="times, serif" size="3">Invitation Not Accepted Yet !<br><br></font>
+                         <% end %>	
+				<font face="times, serif" size="4">Employee Name: <br></font>
+				<font color="brown" face="times, serif" size="3"><%= friend.name %><br><br></font>
+				<font face="times, serif" size="4">Employee Email: <br></font>
+				<font color="brown" face="times, serif" size="3"><%= friend.mail %><br></font>
+	       	     	</h5>
+                   </div>
+			<% if current_user.id == @project.user_id %>
+				 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <%= link_to ' Remove from project', friend, :confirm => 'Are you sure you want to delete this user from your project?', :method => :delete %>
+			<% end %>
+		</div>
+		
+		<% end %>
+	     
+	   </div>
+	</div>
